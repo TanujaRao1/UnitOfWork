@@ -1,0 +1,56 @@
+﻿@model IEnumerable<UnitOfWork_WebApplication1.Models.StudentCourse>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName("Student Id")
+            </th>
+            <th>
+                @Html.DisplayName("Course Id")
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Student)*@
+                @Html.DisplayName("Student Name")
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Course)*@
+                @Html.DisplayName("Course Name")
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Student.StudentId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Course.CourseId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Student.StudentName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Course.CourseName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.StudentId, id2 = item.CourseId }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
